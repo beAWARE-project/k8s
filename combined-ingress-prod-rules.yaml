@@ -8,7 +8,7 @@ metadata:
     ingress.bluemix.net/rewrite-path: |
       serviceName=video-analysis rewrite=/;
       serviceName=social-media-annotation-tool rewrite=/;
-      serviceName=sensor-things-server rewrite=/;
+      serviceName=frost-http rewrite=/;
       serviceName=mobileapp rewrite=/browser/www/;
       serviceName=object-store rewrite=/;
   name: rules-prod
