@@ -31,7 +31,7 @@ spec:
             servicePort: 2020
         - path: /sensor-things-server/
           backend:
-            serviceName: sensor-things-server
+            serviceName: frost-http
             servicePort: 8080
         - path: /mobileapp/
           backend:
