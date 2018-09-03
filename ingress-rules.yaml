@@ -8,13 +8,13 @@ metadata:
 spec:
   tls:
   - hosts:
-    - jenkins.beaware.uk-south.containers.mybluemix.net
-    secretName: beaware
+    - beaware-1.eu-de.containers.appdomain.cloud
+    secretName: beaware-1
   rules:
-  - host: jenkins.beaware.uk-south.containers.mybluemix.net
+  - host: beaware-1.eu-de.containers.appdomain.cloud
     http:
       paths:
       - backend:
           serviceName: beaware-jenkins
           servicePort: 8080
-        path: /
+        path: /jenkins

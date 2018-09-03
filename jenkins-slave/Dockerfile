@@ -25,6 +25,12 @@ RUN wget https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_
 RUN wget https://storage.googleapis.com/kubernetes-release/release/v1.7.2/bin/linux/amd64/kubectl && \
 	chmod +x kubectl && \
 	mv kubectl /usr/bin/
+
+#Install Helm
+RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v2.10.0-linux-amd64.tar.gz && \
+	tar -zxvf helm-v2.10.0-linux-amd64.tar.gz && \
+	mv linux-amd64//helm /usr/local/bin/helm && \
+	rm -rf linux-amd64 helm-v2.10.0-linux-amd64.tar.gz
 	
 
 #End of Dockerfile

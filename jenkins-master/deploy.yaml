@@ -28,6 +28,9 @@ spec:
       - image: jenkins/jenkins:2.121.2
         imagePullPolicy: Always
         name: beaware-jenkins
+        env:
+          - name: JENKINS_OPTS
+            value: "--prefix=/jenkins"
         ports:
         - containerPort: 8080
           name: http

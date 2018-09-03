@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: chown
+spec:
+  containers:
+  - image: busybox
+    imagePullPolicy: Always
+    name: jnlp
+    command: ['sleep']
+    args: ['1000']
+    volumeMounts:
+    - mountPath: /home/jenkins
+      name: workspace-volume
+    workingDir: /home/jenkins
+  volumes:
+  - name: workspace-volume
+    persistentVolumeClaim:
+      claimName: jenkins-slave-data
+

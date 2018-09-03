@@ -4,6 +4,7 @@ metadata:
   labels:
     app: jenkins-slave
   name: beaware-jenkins-slave
+  namespace: build
 spec:
   replicas: 1
   selector:
@@ -23,26 +24,27 @@ spec:
     spec:
       containers:
       - args:
-        - 23cf73cba766b68de1f453eba8795ba5614614166572edb0b167a5a84ced4b62
-        - beaware-jenkins-slave
         env:
         - name: JENKINS_LOCATION_URL
-          value: http://jenkins.beaware.uk-south.containers.mybluemix.net/
+          value: http://beaware-1.eu-de.containers.appdomain.cloud/jenkins
         - name: JENKINS_SECRET
-          value: 23cf73cba766b68de1f453eba8795ba5614614166572edb0b167a5a84ced4b62
+          valueFrom:
+            secretKeyRef:
+              key: jnlp-token
+              name: jnlp-secret
         - name: JENKINS_JNLP_URL
-          value: http://beaware-jenkins.default.svc.cluster.local:8080/computer/beaware-jenkins-slave/slave-agent.jnlp
+          value: http://beaware-jenkins.default.svc.cluster.local:8080/jenkins/computer/beaware-jenkins-slave/slave-agent.jnlp
         - name: JENKINS_TUNNEL
           value: beaware-jenkins.default.svc.cluster.local:50000
         - name: JENKINS_NAME
           value: beaware-jenkins-slave
         - name: JENKINS_URL
-          value: http://beaware-jenkins.default.svc.cluster.local:8080
+          value: http://beaware-jenkins.default.svc.cluster.local:8080/jenkins
         - name: HOME
           value: /home/jenkins
         - name: DOCKER_HOST
           value: docker-engine
-        image: registry.eu-gb.bluemix.net/beaware/jenkins-slave
+        image: beaware/jenkins-slave
         imagePullPolicy: Always
         name: jnlp
         resources:
