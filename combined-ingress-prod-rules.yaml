@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   namespace: prod
   annotations:
+    ingress.bluemix.net/proxy-connect-timeout: "serviceName=frost-http timeout=75s"
+    ingress.bluemix.net/proxy-read-timeout: "serviceName=frost-http timeout=3m"
     ingress.bluemix.net/client-max-body-size: "512m"
     ingress.bluemix.net/redirect-to-https: "true"
     ingress.bluemix.net/rewrite-path: |
