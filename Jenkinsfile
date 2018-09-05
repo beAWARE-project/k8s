@@ -1,7 +1,7 @@
 node ('beaware-jenkins-slave') {
 
  stage('Download Latest') {
-        git(url: 'https://github.com/beaware-project/k8s.git', branch: 'master')
+        git(url: 'https://github.com/beaware-project/k8s.git', branch: 'new-cluster')
    }
     
  stage ('Deploy') {
