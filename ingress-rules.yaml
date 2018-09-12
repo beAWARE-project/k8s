@@ -8,10 +8,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - beaware-1.eu-de.containers.appdomain.cloud
+    - jenkins.beaware-1.eu-de.containers.appdomain.cloud
     secretName: beaware-1
   rules:
-  - host: beaware-1.eu-de.containers.appdomain.cloud
+  - host: jenkins.beaware-1.eu-de.containers.appdomain.cloud
     http:
       paths:
       - backend:
