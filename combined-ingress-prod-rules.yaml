@@ -18,7 +18,7 @@ spec:
   tls:
   - hosts:
     - beaware-1.eu-de.containers.appdomain.cloud
-    secretName: beaware
+    secretName: beaware-1
   rules:
   - host: beaware-1.eu-de.containers.appdomain.cloud
     http:
