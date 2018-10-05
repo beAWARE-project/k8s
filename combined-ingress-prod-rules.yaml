@@ -10,7 +10,7 @@ metadata:
     ingress.bluemix.net/rewrite-path: |
       serviceName=video-analysis rewrite=/;
       serviceName=social-media-annotation-tool rewrite=/;
-      serviceName=sensor-things-server rewrite=/;
+      serviceName=frost-server-frost-server-http rewrite=/;
       serviceName=mobileapp rewrite=/browser/www/;
       serviceName=object-store rewrite=/;
   name: rules-prod
@@ -33,7 +33,7 @@ spec:
             servicePort: 2020
         - path: /sensor-things-server/
           backend:
-            serviceName: sensor-things-server
+            serviceName: frost-server-frost-server-http
             servicePort: 8080
         - path: /mobileapp/
           backend:
