@@ -34,7 +34,7 @@ spec:
         - path: /sensor-things-server/
           backend:
             serviceName: frost-server-frost-server-http
-            servicePort: 8080
+            servicePort: 80
         - path: /mobileapp/
           backend:
             serviceName: mobileapp
