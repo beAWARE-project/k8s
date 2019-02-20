@@ -35,6 +35,10 @@ spec:
           backend:
             serviceName: frost-server-frost-server-http
             servicePort: 80
+        - path: /frost-simulated/
+          backend:
+            serviceName: frost-simulated-frost-server-http
+            servicePort: 8080            
         - path: /mobileapp/
           backend:
             serviceName: mobileapp
