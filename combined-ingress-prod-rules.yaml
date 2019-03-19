@@ -5,22 +5,24 @@ metadata:
   annotations:
     ingress.bluemix.net/proxy-connect-timeout: "serviceName=frost-http timeout=75s"
     ingress.bluemix.net/proxy-read-timeout: "serviceName=frost-http timeout=3m"
+    ingress.bluemix.net/proxy-read-timeout: "serviceName=knowledgebase timeout=3m"
     ingress.bluemix.net/client-max-body-size: "512m"
     ingress.bluemix.net/redirect-to-https: "true"
     ingress.bluemix.net/rewrite-path: |
       serviceName=video-analysis rewrite=/;
       serviceName=social-media-annotation-tool rewrite=/;
-      serviceName=frost-http rewrite=/;
+      serviceName=frost-server-frost-server-http rewrite=/;
+      serviceName=frost-simulated-frost-server-http rewrite=/;
       serviceName=mobileapp rewrite=/browser/www/;
       serviceName=object-store rewrite=/;
   name: rules-prod
 spec:
   tls:
   - hosts:
-    - beaware.uk-south.containers.mybluemix.net
-    secretName: beaware
+    - beaware-1.eu-de.containers.appdomain.cloud
+    secretName: beaware-1
   rules:
-  - host: beaware.uk-south.containers.mybluemix.net
+  - host: beaware-1.eu-de.containers.appdomain.cloud
     http:
       paths:
         - path: /video-analysis/
@@ -33,8 +35,12 @@ spec:
             servicePort: 2020
         - path: /sensor-things-server/
           backend:
-            serviceName: frost-http
-            servicePort: 8080
+            serviceName: frost-server-frost-server-http
+            servicePort: 80
+        - path: /frost-simulated/
+          backend:
+            serviceName: frost-simulated-frost-server-http
+            servicePort: 80
         - path: /mobileapp/
           backend:
             serviceName: mobileapp
